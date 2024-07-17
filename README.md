@@ -72,7 +72,7 @@
 ┃ ┣ 📜6.promse-all.js <br>
 ┃ ┣ 📜7.async.js <br>
 ┃ ┣ 📜8.async-quiz.js <br>
-┃ ┣ 📜9.js <br>on.js <br>
+┃ ┣ 📜9.js on.js <br>
 ┃ ┗ 📜index.html <br>
 ┣ 📂14.scope <br>
 ┃ ┣ 📜1.scope.js <br>
@@ -86,7 +86,7 @@
 ┃ ┣ 📜2.freeze.js <br>
 ┃ ┣ 📜3.prototype.js <br>
 ┃ ┣ 📜4.inheritance.js <br>
-┃ ┣ 📜5.mixin.js <br> <br>
+┃ ┣ 📜5.mixin.js <br> 
 ┃ ┣ 📜6.quiz.js <br>
 ┃ ┗ 📜index.html <br>
 ┣ 📂16.closure <br>
@@ -99,10 +99,10 @@
 ┃ ┣ 📜3.binding-solve.js <br>
 ┃ ┗ 📜4.arrow.js <br>
 ┣ 📂18.babel <br>
-┃ ┣ 📜babel.config.js <br>on <br>
+┃ ┣ 📜babel.config.js >on <br>
 ┃ ┣ 📜index.js <br>
-┃ ┣ 📜package-lock.js <br>on <br>
-┃ ┗ 📜package.js <br>on <br>
+┃ ┣ 📜package-lock.js on <br>
+┃ ┗ 📜package.js on <br>
 ┣ 📂2.operator <br>
 ┃ ┣ 📜1.expression.js <br>
 ┃ ┣ 📜2.arithmetic.js <br>
@@ -129,14 +129,14 @@
 ┃ ┣ 📜6.callback.js <br>
 ┃ ┣ 📜7.quiz.js <br>
 ┃ ┗ 📜8.immutability.js <br>
-┣ 📂5.object
+┣ 📂5.object<br>
 ┃ ┣ 📜1.object.js <br>
 ┃ ┣ 📜2.compute.js <br>
 ┃ ┣ 📜3.short.js <br>
 ┃ ┣ 📜4.method.js <br>
 ┃ ┣ 📜5.create.js <br>
 ┃ ┗ 📜8.immutability.js <br>
-┣ 📂6.class
+┣ 📂6.class<br>
 ┃ ┣ 📜1.basic.js <br>
 ┃ ┣ 📜2.static.js <br>
 ┃ ┣ 📜3.field.js <br>
@@ -144,7 +144,7 @@
 ┃ ┣ 📜5.extends.js <br>
 ┃ ┣ 📜quiz1.js <br>
 ┃ ┗ 📜quiz2.js <br>
-┣ 📂7.built-in
+┣ 📂7.built-in<br>
 ┃ ┣ 📜1.wrapper.js <br>
 ┃ ┣ 📜2.global.js <br>
 ┃ ┣ 📜3.boolean.js <br>
@@ -153,7 +153,7 @@
 ┃ ┣ 📜6.string.js <br>
 ┃ ┣ 📜7.date.js <br>
 ┃ ┗ 📜8.quiz.js <br>
-┣ 📂8.array
+┣ 📂8.array<br>
 ┃ ┣ 📜1.array.js <br>
 ┃ ┣ 📜2.add.js <br>
 ┃ ┣ 📜3.array-method.js <br>
@@ -161,7 +161,7 @@
 ┃ ┣ 📜5.quiz.js <br>
 ┃ ┣ 📜6.hof.js <br>
 ┃ ┗ 📜7.quiz.js <br>
-┗ 📂9.iterator
+┗ 📂9.iterator<br>
 ┃ ┣ 📜1.iterable.js <br>
 ┃ ┣ 📜2.iterable-quiz.js <br>
 ┃ ┣ 📜3.iterable-quiz-function.js <br>
