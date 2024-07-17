@@ -1,3 +1,5 @@
+// boolean 참 또는 거짓
+
 // 블리언 타입
 let 참 = true;
 let 거짓 = false;

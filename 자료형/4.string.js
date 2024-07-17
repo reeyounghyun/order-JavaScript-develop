@@ -1,3 +1,5 @@
+// string 문자열
+
 // 문자열 타입
 let string = '안녕하세요';
 string = '안녕!';
