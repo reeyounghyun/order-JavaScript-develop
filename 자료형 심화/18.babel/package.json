@@ -2,9 +2,9 @@
   "name": "18.babel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.js <br>",
   "scripts": {
-    "build": "babel index.js -w -o build/index.js"
+    "build": "babel index.js <br> -w -o build/index.js <br>"
   },
   "keywords": [],
   "author": "",

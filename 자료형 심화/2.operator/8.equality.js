@@ -16,10 +16,10 @@ console.log(false === 0);
 console.clear();
 
 const obj1 = {
-  name: 'js',
+  name: 'js <br>',
 };
 const obj2 = {
-  name: 'js',
+  name: 'js <br>',
 };
 
 console.log(obj1 == obj2);

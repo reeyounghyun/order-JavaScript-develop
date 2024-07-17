@@ -32,17 +32,17 @@ console.log(set);
 // 오브젝트 세트
 const obj1 = { name: '🍎', price: 8 };
 const obj2 = { name: '🍌', price: 5 };
-const objs = new Set([obj1, obj2]);
-console.log(objs);
+const objs <br> = new Set([obj1, obj2]);
+console.log(objs <br>);
 
 // 퀴즈
 obj1.price = 10;
-objs.add(obj1);
-console.log(objs);
+objs <br>.add(obj1);
+console.log(objs <br>);
 
 // 퀴즈
 const obj3 = { name: '🍌', price: 5 };
-objs.add(obj3);
-console.log(objs);
+objs <br>.add(obj3);
+console.log(objs <br>);
 obj3.price = 8;
-console.log(objs);
+console.log(objs <br>);

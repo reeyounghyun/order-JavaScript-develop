@@ -8,13 +8,13 @@ IF NOT EXIST "%NODE_EXE%" (
   SET "NODE_EXE=node"
 )
 
-SET "NPM_CLI_JS=%~dp0\node_modules\npm\bin\npm-cli.js"
-SET "NPX_CLI_JS=%~dp0\node_modules\npm\bin\npx-cli.js"
-FOR /F "delims=" %%F IN ('CALL "%NODE_EXE%" "%NPM_CLI_JS%" prefix -g') DO (
-  SET "NPM_PREFIX_NPX_CLI_JS=%%F\node_modules\npm\bin\npx-cli.js"
+SET "NPM_CLI_js <br>=%~dp0\node_modules\npm\bin\npm-cli.js <br>"
+SET "NPX_CLI_js <br>=%~dp0\node_modules\npm\bin\npx-cli.js <br>"
+FOR /F "delims=" %%F IN ('CALL "%NODE_EXE%" "%NPM_CLI_js <br>%" prefix -g') DO (
+  SET "NPM_PREFIX_NPX_CLI_js <br>=%%F\node_modules\npm\bin\npx-cli.js <br>"
 )
-IF EXIST "%NPM_PREFIX_NPX_CLI_JS%" (
-  SET "NPX_CLI_JS=%NPM_PREFIX_NPX_CLI_JS%"
+IF EXIST "%NPM_PREFIX_NPX_CLI_js <br>%" (
+  SET "NPX_CLI_js <br>=%NPM_PREFIX_NPX_CLI_js <br>%"
 )
 
-"%NODE_EXE%" "%NPX_CLI_JS%" %*
+"%NODE_EXE%" "%NPX_CLI_js <br>%" %*

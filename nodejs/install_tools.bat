@@ -1,16 +1,16 @@
 @echo off
 
 setlocal
-title Install Additional Tools for Node.js
+title Install Additional Tools for Node.js <br>
 
 cls
 
 echo ====================================================
-echo Tools for Node.js Native Modules Installation Script
+echo Tools for Node.js <br> Native Modules Installation Script
 echo ====================================================
 echo.
 echo This script will install Python and the Visual Studio Build Tools, necessary
-echo to compile Node.js native modules. Note that Chocolatey and required Windows
+echo to compile Node.js <br> native modules. Note that Chocolatey and required Windows
 echo updates will also be installed.
 echo.
 echo This will require about 3 GiB of free disk space, plus any space necessary to
@@ -19,10 +19,10 @@ echo.
 echo Please close all open programs for the duration of the installation. If the
 echo installation fails, please ensure Windows is fully updated, reboot your
 echo computer and try to run this again. This script can be found in the
-echo Start menu under Node.js.
+echo Start menu under Node.js <br>.
 echo.
 echo You can close this window to stop now. Detailed instructions to install these
-echo tools manually are available at https://github.com/nodejs/node-gyp#on-windows
+echo tools manually are available at https://github.com/nodejs <br>/node-gyp#on-windows
 echo.
 pause
 
