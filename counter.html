@@ -20,8 +20,8 @@
         <span class="count_number">2</span>
         <div class="btn button_block">
             <button type="button" class="btn_decrease">삭제 버튼</button>
-            <button type="button" class="btn_reset">증가 버튼</button>
-            <button type="button" class="btn_increase">초기화 버튼</button>
+            <button type="button" class="btn_increase">증가 버튼</button>
+            <button type="button" class="btn_reset">초기화 버튼</button>
         </div>
     </div>
 
@@ -35,32 +35,19 @@
             1) class에 대한 변수를 선언 필요.
             2) 각 각에 클릭 이벤트 함수를 만들어준다.
             3) 각 클릭 이벤트에 필요한 함수를 만들어준다.
-            */
+            
+            쓰이는 함수??
+            변수를 위한 cosnt 
+            이벤트를 호출하기 위한 addEventListener
+        **/
+
+        const addItem = document.querySelector(".btn_increase")
+        const decItem = document.querySelector(".btn_decrease")
+        const resetItem = document.querySelector(".btn_reset")
+
+        document.querySelector('.addItem').click(function(){});
+        document.querySelector('.addItem').addEventListener('click', function(){});
         
-            document.addEventListener("DOMContentLoaded", function() {
-                const setNum = document.querySelector(".count_number");
-                const SetDecrease = document.querySelector(".btn_decrease");
-                const SetReset = document.querySelector(".btn_reset");
-                const SetIncrease = document.querySelector(".btn_increase");
-                
-                SetDecrease.addEventListener('click', function(){
-                    let num = count.texContent;
-                    num = Number(num) - 1;
-                    count.texContent = num;
-                });
-        
-                SetReset.addEventListener('click', function(){
-                    count.texContent = 0;
-                });
-                
-                SetIncrease.addEventListener('click', function(){
-                    let num = count.texContent;
-                    num = Number(num) + 1;
-                    count.texContent = unm;
-                })
-            });
-        </script>
-        
-</script>
+    </script>
 </body>
 </html>
