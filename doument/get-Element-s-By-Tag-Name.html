@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByTagName 실습</title>
+</head>
+<body>
+    <ul>
+        <li>Html</li>
+        <li>css</li>
+        <li>jsavaScript</li>
+    </ul>
+
+    <ol>
+        <li class="actvie">또다른 html</li>
+        <li class="actvie">또다른 css</li>
+        <li class="actvie">또다른 jsavaScript</li>
+    </ol>
+
+    <script>
+    // 돔에 접근하여 li를 호출하는 라인
+    // li에 변수 이름을 lis으로 정해줌
+    // li를 사용하기 위해 lis라는 이름을 짓어줌
+    var lis = document.getElementsByTagName('ul')
+        // for문을 사용하여 li에 style을 주는 라인
+        for(var i = 0; lis.length; i++){
+            lis[i].style.color = 'red';
+        }
+    </script>
+</body>
+</html>

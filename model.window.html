@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달창 만들기</title>
+    <style>
+        *{
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .wrap p.color-oj{display: block; border: 1px solid red; font-size: 18px; color: #333;}
+        .wrap{position: relative; width: 100%; height: 100vh; background: #fff;}
+        .model-bg{display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #33333379; z-index: 900;}
+        .model{position: absolute; transform: translate(-50%, -50%); left: 50%; top: 50%; border: 1px solid #ccc; background-color: #0e722c; padding: 15px 30px; z-index: 1000;}
+        .model .title{font-size: 20px; font-weight: bold; text-align: center; }
+        .model p{text-align: center; font-size: 16px; font-weight: 300;}
+        .model button{margin-top: 15px; border: 1px solid red; text-align: center; background-color: #333; width: 90px; height: 30px; border-radius: 20px; font-size: 17px;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <p class="color-oj">자바스크립트로 모달창 만들기</p>
+        <div class="model-bg">
+            <div class="model">
+                <span class="title">타이틀을 넣으시오</span>
+                <p>자바스크립트로 모달만들기</p>
+                <button type="button" class="btn1">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var eve = document.querySelector('.color-oj'); // 버튼
+        var mod = document.querySelector('.model-bg') // 모달창
+        var btn1 = document.querySelector('.btn1') // 모달창 닫기 버튼
+
+        btn1.addEventListener('click', function(){
+            mod.style.display = 'none';
+        })
+
+        eve.addEventListener('click',function(){
+            mod.style.display='block';
+        })
+    </script>
+</body>
+</html>

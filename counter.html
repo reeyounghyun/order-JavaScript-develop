@@ -17,11 +17,11 @@
 <body>
     <div class="main container">
         <h2 class="title">Counter</h2>
-        <span class="count_number">2</span>
+        <span class="count-display">0</span>
         <div class="btn button_block">
-            <button type="button" class="btn_decrease">삭제 버튼</button>
+            <!-- <button type="button" class="btn_decrease">삭제 버튼</button> -->
             <button type="button" class="btn_increase">증가 버튼</button>
-            <button type="button" class="btn_reset">초기화 버튼</button>
+            <!-- <button type="button" class="btn_reset">초기화 버튼</button> -->
         </div>
     </div>
 
@@ -39,14 +39,35 @@
             쓰이는 함수??
             변수를 위한 cosnt 
             이벤트를 호출하기 위한 addEventListener
+
+
+            증가하는 1을 만들어 보자
+
+            1. 숫자 요소 찾기
+            2. 클릭할 요소찾기
+            3. 클릭 이벤트 발생시
+                3-1  결과를 표시할 요소 찾기
+                3-2  1이었던 숫자가 1씩 증가하기
         **/
 
-        const addItem = document.querySelector(".btn_increase")
-        const decItem = document.querySelector(".btn_decrease")
-        const resetItem = document.querySelector(".btn_reset")
 
-        document.querySelector('.addItem').click(function(){});
-        document.querySelector('.addItem').addEventListener('click', function(){});
+     
+        // 버튼 요소 선택
+        const addItemBtn = document.querySelector(".btn_increase");
+        // const decItem = document.querySelector(".btn_decrease")
+       // const resetItem = document.querySelector(".btn_reset")
+
+        // 카운터 변수 초기화
+        let count = 0;
+
+        // 클릭 이벤트 리스너 추가
+        addItemBtn.addEventListener('click', function(){
+            // 카운트 증가
+            count++;
+            
+            // 결과 표시 (예: 페이지의 특정 요소에 카운트 표시)
+            document.querySelector(".count-display").textContent = count;
+        });
         
     </script>
 </body>

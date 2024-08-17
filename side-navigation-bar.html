@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 햄버거 네비게이션 바 만들기</title>
+    <style>
+      .wrap{position: relative;}
+      .nav-wrap{
+        display: none;
+        position: fixed;
+        background: #fff;
+        width: 300px;
+        height: 1000vh;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        border: 1px solid red;
+        padding: 10px 20px;
+        transition: all 0.5s;
+        }
+        ul{
+          padding: 0;
+          margin: 0;
+        }
+        li{
+          list-style: none;
+          font-size: 16px;
+          color: #333;
+          text-align: left;
+        }
+        li + li{
+          margin-top: 10px;
+        }
+        h1{
+        text-align: left;
+        }
+        span.close{
+          border: 1px solid blue;
+          font-size: 16px;
+          font-weight: bold;
+          color: #333;
+          position: absolute;
+          z-index: 10000;
+          right: 0;
+          top: 0  ;
+          cursor: pointer;
+          transition: all 0.5s;
+          cursor: pointer;
+        }
+        .nav-btn{
+          font-size: 40px;
+          color: #000;
+          font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="nav-btn">메뉴</span>
+    <div class="nav-wrap">
+      <span class="close">닫기버튼</span>
+      <h1>햄버거</h1>
+      <ul>
+          <li>메뉴1</li>
+          <li>메뉴2</li>
+          <li>메뉴3</li>
+          <li>메뉴4</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    var open = document.querySelector(".nav-btn"); //메뉴
+    var close = document.querySelector('.close'); // 닫기버튼
+    var navbody = document.querySelector('.nav-wrap');
+
+    // 닫기 버튼을 클릭 했을 때 nav-wrap 이라는 클래스가 display none
+    close.addEventListener('click', function(){
+      navbody.style.display = 'none';
+    });
+    // 메뉴 버튼을 클릭 했을 때 nav-wrap 이라는 클레스를 호출 display block
+
+    open.addEventListener('click', function(){
+      navbody.style.display = 'block'
+    })
+  </script>
+</body>
+</html>
