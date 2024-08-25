@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ 페이지 만들기-3</title>
+    <style>
+        .toggle-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .toggle-content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .active .toggle-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="faq-container">
+        <div class="toggle-box">
+            <h3>첫번째 질문</h3>
+            <div class="toggle-content">첫번째 질문에 대한 답변입니다.</div>
+        </div>
+        <div class="toggle-box">
+            <h3>두번째 질문</h3>
+            <div class="toggle-content">두번째 질문에 대한 답변입니다.</div>
+        </div>
+        <div class="toggle-box">
+            <h3>세번째 질문</h3>
+            <div class="toggle-content">세번째 질문에 대한 답변입니다.</div>
+        </div>
+    </div>
+
+    <script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const toggleBoxes = document.querySelectorAll('.toggle-box');
+
+        //     toggleBoxes.forEach(box => {
+        //         box.addEventListener('click', function() {
+        //             this.classList.toggle('active');
+        //         });
+        //     });
+        // });
+
+        document.addEventListener('DOMContentLoaded', function(){
+            const toggleBoxes = document.querySelectorAll('.toggle-box');
+
+            toggleBoxes.forEach(box =>{
+                box.addEventListener('click',function(){
+                    this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>우리 홈페이지에 오신 것을 환영합니다!</h1>
+    <p>총 방문자 수: <span id="visitorCount">로딩 중...</span></p>
+
+    <script>
+   // 페이지 로드 시 방문자 수 가져오기
+   window.onload = function() {
+            fetch('/api/getVisitorCount', { 
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('visitorCount').textContent = data.count;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('visitorCount').textContent = '에러 발생';
+            });
+        };
+    </script>
+</body>
+</html>

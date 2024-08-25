@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ 페이지 만들기-2</title>
+    <style>
+          .toggle-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .toggle-content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .active .toggle-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="toggle-container"></div>
+
+    <script>
+      const toggleData = [
+            {title: '첫번째 자바스크립트로 만드는', content: "첫번째 토글 박스"},
+            {title: '두번째 자바스크립트로 만드는', content: "두번째 토글 박스"},
+            {title: '세번째 자바스크립트로 만드는', content: "세번째 토글 박스"}
+        ];
+
+        const container = document.querySelector('#toggle-container');
+
+        toggleData.forEach((item, index) => {
+            const box = document.createElement('div');
+            box.className = 'toggle-box';
+            box.innerHTML = `
+                <h3>${item.title}</h3>
+                <div class="toggle-content">${item.content}</div>
+            `;
+
+            box.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+            container.appendChild(box);
+        });
+    </script>
+</body>
+</html>

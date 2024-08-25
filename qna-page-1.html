@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ 페이지 만들기-1</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .wrap{overflow: hidden; width: 100%; height: 100%; height: 100vh;} 
+        .item{height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; border:1px solid #000; border-radius: 30px;}
+        .title{padding: 5px 15px;  text-align: center; font-size: 33px; color: #bf88f3; font-weight: bold; margin-bottom: 10px; background-color: #000;}
+        .box{display: none; padding: 5px 15px;  color: #000; font-size: 16px; font-weight: 400; text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="item">
+            <h2 class="title">공지사항을 만들어 봅시다</h2>
+            <div class="box">
+                <h2 class="inner">공지사항 내용 보이기 성공!</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var title = document.querySelector('.title');
+        var inner = document.querySelector('.box');
+
+        title.addEventListener('click',function(){
+            inner.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

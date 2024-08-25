@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록 만들기 - 등록/수정/삭제/페이지네이션</title>
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #guestbook-form, #guestbook-controls {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        #guestbook-form input, #guestbook-form textarea, #search-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #guestbook-entries {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .guestbook-entry {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            position: relative;
+        }
+        .guestbook-entry:last-child {
+            border-bottom: none;
+        }
+        .entry-name {
+            font-weight: bold;
+        }
+        .entry-date {
+            color: #777;
+            font-size: 0.8em;
+        }
+        .edit-btn, .delete-btn {
+            position: absolute;
+            top: 10px;
+        }
+        .edit-btn {
+            right: 60px;
+            background-color: #28a745;
+        }
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+        .delete-btn {
+            right: 10px;
+            background-color: #dc3545;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+        #pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #pagination button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>고급 방명록 (페이지네이션 포함)</h1>
+    
+    <div id="guestbook-form">
+        <input type="text" id="name" placeholder="이름" required>
+        <textarea id="message" placeholder="메시지" required></textarea>
+        <button onclick="addEntry()">등록</button>
+    </div>
+
+    <div id="guestbook-controls">
+        <input type="text" id="search-input" placeholder="검색..." oninput="searchEntries()">
+        <button onclick="sortEntries('name')">이름순 정렬</button>
+        <button onclick="sortEntries('date')">날짜순 정렬</button>
+    </div>
+
+    <div id="guestbook-entries"></div>
+    <div id="pagination"></div>
+
+    <script>
+        let guestbookEntries = [];
+        let editingId = null;
+        let currentPage = 1;
+        const entriesPerPage = 5;
+
+        function addEntry() {
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            if (name && message) {
+                if (editingId !== null) {
+                    // 수정 모드
+                    const index = guestbookEntries.findIndex(entry => entry.id === editingId);
+                    if (index !== -1) {
+                        guestbookEntries[index].name = name;
+                        guestbookEntries[index].message = message;
+                        guestbookEntries[index].date = new Date().toLocaleString() + " (수정됨)";
+                        editingId = null;
+                        document.querySelector('#guestbook-form button').textContent = '등록';
+                    }
+                } else {
+                    // 새 항목 추가
+                    const newEntry = {
+                        id: Date.now(),
+                        name: name,
+                        message: message,
+                        date: new Date().toLocaleString()
+                    };
+                    guestbookEntries.unshift(newEntry);
+                }
+                displayEntries();
+                document.getElementById('name').value = '';
+                document.getElementById('message').value = '';
+                alert(editingId !== null ? '수정이 완료되었습니다.' : '등록이 완료되었습니다.');
+            } else {
+                alert('이름과 메시지를 모두 입력해주세요.');
+            }
+        }
+
+        function displayEntries(entriesToShow = guestbookEntries) {
+            const entriesDiv = document.getElementById('guestbook-entries');
+            entriesDiv.innerHTML = '';
+
+            const startIndex = (currentPage - 1) * entriesPerPage;
+            const endIndex = startIndex + entriesPerPage;
+            const pageEntries = entriesToShow.slice(startIndex, endIndex);
+
+            pageEntries.forEach(entry => {
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'guestbook-entry';
+                entryDiv.innerHTML = `
+                    <div class="entry-name">${entry.name}</div>
+                    <div class="entry-message">${entry.message}</div>
+                    <div class="entry-date">${entry.date}</div>
+                    <button class="edit-btn" onclick="editEntry(${entry.id})">수정</button>
+                    <button class="delete-btn" onclick="deleteEntry(${entry.id})">삭제</button>
+                `;
+                entriesDiv.appendChild(entryDiv);
+            });
+
+            displayPagination(entriesToShow.length);
+        }
+
+        function displayPagination(totalEntries) {
+            const totalPages = Math.ceil(totalEntries / entriesPerPage);
+            const paginationDiv = document.getElementById('pagination');
+            paginationDiv.innerHTML = '';
+
+            if (currentPage > 1) {
+                paginationDiv.innerHTML += `<button onclick="changePage(${currentPage - 1})">이전</button>`;
+            }
+
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationDiv.innerHTML += `<button disabled>${i}</button>`;
+                } else {
+                    paginationDiv.innerHTML += `<button onclick="changePage(${i})">${i}</button>`;
+                }
+            }
+
+            if (currentPage < totalPages) {
+                paginationDiv.innerHTML += `<button onclick="changePage(${currentPage + 1})">다음</button>`;
+            }
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            displayEntries();
+        }
+
+        function editEntry(id) {
+            const entry = guestbookEntries.find(entry => entry.id === id);
+            if (entry) {
+                document.getElementById('name').value = entry.name;
+                document.getElementById('message').value = entry.message;
+                document.querySelector('#guestbook-form button').textContent = '수정';
+                editingId = id;
+            }
+        }
+
+        function deleteEntry(id) {
+            if (confirm('정말로 이 항목을 삭제하시겠습니까?')) {
+                guestbookEntries = guestbookEntries.filter(entry => entry.id !== id);
+                displayEntries();
+                alert('항목이 삭제되었습니다.');
+            }
+        }
+
+        function sortEntries(criteria) {
+            if (criteria === 'name') {
+                guestbookEntries.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (criteria === 'date') {
+                guestbookEntries.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+            currentPage = 1;
+            displayEntries();
+        }
+
+        function searchEntries() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const filteredEntries = guestbookEntries.filter(entry => 
+                entry.name.toLowerCase().includes(searchTerm) || 
+                entry.message.toLowerCase().includes(searchTerm)
+            );
+            currentPage = 1;
+            displayEntries(filteredEntries);
+        }
+
+        displayEntries();
+    </script>
+</body>
+</html>
